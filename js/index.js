@@ -1,6 +1,6 @@
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
-
+const pathPage = window.location.pathname;
 canvas.width = 1024;
 canvas.height = 576;
 
@@ -28,7 +28,7 @@ const backgound = new Sprite({
         x: 0,
         y: 0,
     },
-    imageSrc: '../images/map_1.png',
+    imageSrc:  pathPage + 'images/map_1.png',
 });
 const floorCollisions2D = [];
 for (let i = 0; i < floorCollisions.length; i += 36) {
@@ -68,32 +68,32 @@ floorCollisions2D.forEach((row, indexY) => {
                     },
                     collisionBlocks: collisionBlocks,
                     platformCollisionBlocks: collisionBlocks,
-                    imageSrc: '../images/bee-left.png',
+                    imageSrc:  pathPage + 'images/bee-left.png',
                     frameRate: 6,
                     frameBuffer: 6,
                     animations: {
                         Idle: {
-                            imageSrc: '../images/bee.png',
+                            imageSrc:  pathPage + 'images/bee.png',
                             frameRate: 6,
                             frameBuffer: 6,
                         },
                         IdleLeft: {
-                            imageSrc: '../images/bee-left.png',
+                            imageSrc:  pathPage + 'images/bee-left.png',
                             frameRate: 6,
                             frameBuffer: 6,
                         },
                         Run: {
-                            imageSrc: '../images/bee-run.png',
+                            imageSrc:  pathPage + 'images/bee-run.png',
                             frameRate: 6,
                             frameBuffer: 4,
                         },
                         RunLeft: {
-                            imageSrc: '../images/bee-run-left.png',
+                            imageSrc:  pathPage + 'images/bee-run-left.png',
                             frameRate: 6,
                             frameBuffer: 4,
                         },
                         Bang: {
-                            imageSrc: '../images/bang_1.png',
+                            imageSrc:  pathPage + 'images/bang_1.png',
                             frameRate: 6,
                             frameBuffer: 4,
                         },
@@ -135,47 +135,47 @@ const player = new Player({
     },
     collisionBlocks: collisionBlocks,
     platformCollisionBlocks: platformCollisionBlocks,
-    imageSrc: '../images/bee.png',
+    imageSrc:  pathPage + 'images/bee.png',
     frameRate: 6,
     frameBuffer: 6,
     animations: {
         Idle: {
-            imageSrc: '../images/bee.png',
+            imageSrc:  pathPage + 'images/bee.png',
             frameRate: 6,
             frameBuffer: 6,
         },
         IdleLeft: {
-            imageSrc: '../images/bee-left.png',
+            imageSrc:  pathPage + 'images/bee-left.png',
             frameRate: 6,
             frameBuffer: 6,
         },
         Run: {
-            imageSrc: '../images/bee-run.png',
+            imageSrc:  pathPage + 'images/bee-run.png',
             frameRate: 6,
             frameBuffer: 4,
         },
         RunLeft: {
-            imageSrc: '../images/bee-run-left.png',
+            imageSrc:  pathPage + 'images/bee-run-left.png',
             frameRate: 6,
             frameBuffer: 4,
         },
         Jump: {
-            imageSrc: '../images/bee-jump.png',
+            imageSrc:  pathPage + 'images/bee-jump.png',
             frameRate: 2,
             frameBuffer: 4,
         },
         JumpLeft: {
-            imageSrc: '../images/bee-jump-left.png',
+            imageSrc:  pathPage + 'images/bee-jump-left.png',
             frameRate: 2,
             frameBuffer: 4,
         },
         Fall: {
-            imageSrc: '../images/bee-fall.png',
+            imageSrc:  pathPage + 'images/bee-fall.png',
             frameRate: 2,
             frameBuffer: 4,
         },
         FallLeft: {
-            imageSrc: '../images/bee-fall-left.png',
+            imageSrc:  pathPage + 'images/bee-fall-left.png',
             frameRate: 2,
             frameBuffer: 4,
         },
@@ -191,23 +191,23 @@ const fire = new Fire({
     height: 12,
     collisionBlocks: collisionBlocks,
     platformCollisionBlocks: platformCollisionBlocks,
-    imageSrc: '../images/fire_1.png',
+    imageSrc:  pathPage + 'images/fire_1.png',
     frameRate: 6,
     frameBuffer: 6,
-    imageBangSrc: '../images/bang_1.png',
+    imageBangSrc:  pathPage + 'images/bang_1.png',
     animations: {
         'Right': {
-            imageSrc: '../images/fire_1.png',
+            imageSrc:  pathPage + 'images/fire_1.png',
             frameRate: 6,
             frameBuffer: 6,
         },
         'Left': {
-            imageSrc: '../images/fire_1-left.png',
+            imageSrc:  pathPage + 'images/fire_1-left.png',
             frameRate: 6,
             frameBuffer: 6,
         },
         'Bang': {
-            imageSrc: '../images/bang_1.png',
+            imageSrc:  pathPage + 'images/bang_1.png',
             frameRate: 6,
             frameBuffer: 12,
         },
