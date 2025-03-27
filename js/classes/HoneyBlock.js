@@ -4,7 +4,7 @@ class HoneyBlock {
         this.isHoney = true;
         this.isEaten = 1;
         this.image = new Image();
-        this.image.src = '../../images/honey_1.png';
+        this.image.src = pathPage + 'images/honey_1.png';
         this.loaded = false;
         this.image.onload = () => {
             this.loaded = true;
