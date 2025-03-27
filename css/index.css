@@ -129,3 +129,35 @@
 .hidden {
     display: none;
 }
+
+.control {
+    position: absolute;
+    padding: 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* background-color: #f93f3f; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.my-btn {
+    border: none;
+    height: 60px;
+    width: 80px;
+    background-color: rgba(255, 255, 255, 0.536);
+    border-radius: 30px;
+    font-family: "Imperial Script", cursive;
+    font-size: 20px;
+}
+
+.control-left {
+    gap: 20px;
+}
+
+.control-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
