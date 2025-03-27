@@ -80,8 +80,8 @@ class Fire extends Sprite {
             this.position.x, this.position.y,
             this.width, this.height);
 
-        context.fillStyle = `rgba(0, 255, 0, 0.5)`;
-        context.fillRect(this.position.x, this.position.y, this.width, this.height);
+        // context.fillStyle = `rgba(0, 255, 0, 0.5)`;
+        // context.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
     drawBang() {
@@ -150,7 +150,7 @@ class Fire extends Sprite {
                 object1: this,
                 object2: collisionBlock,
             })) {
-                if (collisionBlock.isLive) {
+                if (collisionBlock.isLive && this.flying) {
                     // collisionBlock.isLive = 0;
                     collisionBlock.onBang();
                 }

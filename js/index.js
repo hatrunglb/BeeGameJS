@@ -1,6 +1,7 @@
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
-const pathPage = window.location.pathname;
+// const pathPage = window.location.pathname;
+const pathPage = './';
 canvas.width = 1024;
 canvas.height = 576;
 
@@ -28,7 +29,7 @@ const backgound = new Sprite({
         x: 0,
         y: 0,
     },
-    imageSrc:  pathPage + 'images/map_1.png',
+    imageSrc: pathPage + 'images/map_1.png',
 });
 const floorCollisions2D = [];
 for (let i = 0; i < floorCollisions.length; i += 36) {
@@ -68,32 +69,32 @@ floorCollisions2D.forEach((row, indexY) => {
                     },
                     collisionBlocks: collisionBlocks,
                     platformCollisionBlocks: collisionBlocks,
-                    imageSrc:  pathPage + 'images/bee-left.png',
+                    imageSrc: pathPage + 'images/bee-left.png',
                     frameRate: 6,
                     frameBuffer: 6,
                     animations: {
                         Idle: {
-                            imageSrc:  pathPage + 'images/bee.png',
+                            imageSrc: pathPage + 'images/bee.png',
                             frameRate: 6,
                             frameBuffer: 6,
                         },
                         IdleLeft: {
-                            imageSrc:  pathPage + 'images/bee-left.png',
+                            imageSrc: pathPage + 'images/bee-left.png',
                             frameRate: 6,
                             frameBuffer: 6,
                         },
                         Run: {
-                            imageSrc:  pathPage + 'images/bee-run.png',
+                            imageSrc: pathPage + 'images/bee-run.png',
                             frameRate: 6,
                             frameBuffer: 4,
                         },
                         RunLeft: {
-                            imageSrc:  pathPage + 'images/bee-run-left.png',
+                            imageSrc: pathPage + 'images/bee-run-left.png',
                             frameRate: 6,
                             frameBuffer: 4,
                         },
                         Bang: {
-                            imageSrc:  pathPage + 'images/bang_1.png',
+                            imageSrc: pathPage + 'images/bang_1.png',
                             frameRate: 6,
                             frameBuffer: 4,
                         },
@@ -135,47 +136,47 @@ const player = new Player({
     },
     collisionBlocks: collisionBlocks,
     platformCollisionBlocks: platformCollisionBlocks,
-    imageSrc:  pathPage + 'images/bee.png',
+    imageSrc: pathPage + 'images/bee.png',
     frameRate: 6,
     frameBuffer: 6,
     animations: {
         Idle: {
-            imageSrc:  pathPage + 'images/bee.png',
+            imageSrc: pathPage + 'images/bee.png',
             frameRate: 6,
             frameBuffer: 6,
         },
         IdleLeft: {
-            imageSrc:  pathPage + 'images/bee-left.png',
+            imageSrc: pathPage + 'images/bee-left.png',
             frameRate: 6,
             frameBuffer: 6,
         },
         Run: {
-            imageSrc:  pathPage + 'images/bee-run.png',
+            imageSrc: pathPage + 'images/bee-run.png',
             frameRate: 6,
             frameBuffer: 4,
         },
         RunLeft: {
-            imageSrc:  pathPage + 'images/bee-run-left.png',
+            imageSrc: pathPage + 'images/bee-run-left.png',
             frameRate: 6,
             frameBuffer: 4,
         },
         Jump: {
-            imageSrc:  pathPage + 'images/bee-jump.png',
+            imageSrc: pathPage + 'images/bee-jump.png',
             frameRate: 2,
             frameBuffer: 4,
         },
         JumpLeft: {
-            imageSrc:  pathPage + 'images/bee-jump-left.png',
+            imageSrc: pathPage + 'images/bee-jump-left.png',
             frameRate: 2,
             frameBuffer: 4,
         },
         Fall: {
-            imageSrc:  pathPage + 'images/bee-fall.png',
+            imageSrc: pathPage + 'images/bee-fall.png',
             frameRate: 2,
             frameBuffer: 4,
         },
         FallLeft: {
-            imageSrc:  pathPage + 'images/bee-fall-left.png',
+            imageSrc: pathPage + 'images/bee-fall-left.png',
             frameRate: 2,
             frameBuffer: 4,
         },
@@ -191,23 +192,23 @@ const fire = new Fire({
     height: 12,
     collisionBlocks: collisionBlocks,
     platformCollisionBlocks: platformCollisionBlocks,
-    imageSrc:  pathPage + 'images/fire_1.png',
+    imageSrc: pathPage + 'images/fire_1.png',
     frameRate: 6,
     frameBuffer: 6,
-    imageBangSrc:  pathPage + 'images/bang_1.png',
+    imageBangSrc: pathPage + 'images/bang_1.png',
     animations: {
         'Right': {
-            imageSrc:  pathPage + 'images/fire_1.png',
+            imageSrc: pathPage + 'images/fire_1.png',
             frameRate: 6,
             frameBuffer: 6,
         },
         'Left': {
-            imageSrc:  pathPage + 'images/fire_1-left.png',
+            imageSrc: pathPage + 'images/fire_1-left.png',
             frameRate: 6,
             frameBuffer: 6,
         },
         'Bang': {
-            imageSrc:  pathPage + 'images/bang_1.png',
+            imageSrc: pathPage + 'images/bang_1.png',
             frameRate: 6,
             frameBuffer: 12,
         },
@@ -254,7 +255,7 @@ function animate() {
     // })
     player.checkForHorizontalCanvaCollision();
 
-        player.update();
+    player.update();
     player.velocity.x = 0;
     if (keys.d.pressed) {
         player.switchSprite('Run');
@@ -319,8 +320,47 @@ function animate() {
 
 animate();
 
+const btnJump = document.getElementById('btn-jump');
+btnJump.addEventListener('touchstart', (e) => {
+    if (e.repeat) return;
+    console.log('click');
+
+    if (player.position.y <= 32) {
+        return;
+    }
+    player.velocity.y = -jump;
+});
+
+const btnShoot = document.getElementById('btn-shoot');
+btnShoot.addEventListener('touchstart', (e) => {
+    if (fire.flying) return;
+    fire.position.y = player.hitbox.position.y + 2;
+    const value = 16 * 8;
+    if (player.lastDirection === 'left') {
+        fire.position.x = player.hitbox.position.x - player.hitbox.width;
+        fire.lineLeft = player.hitbox.position.x - value;
+        fire.lineRight = player.hitbox.position.x + player.hitbox.width;
+        fire.switchSprite('Left');
+        fire.velocity.x = -2;
+    } else {
+        fire.position.x = player.hitbox.position.x + player.hitbox.width;
+        fire.lineRight = player.hitbox.position.x + player.hitbox.width + value;
+        fire.switchSprite('Right');
+        fire.velocity.x = 2;
+    }
+    fire.flying = 1;
+});
+
+const btnRight = document.getElementById('btn-right');
+const btnLeft = document.getElementById('btn-left');
+
+btnRight.addEventListener('touchstart', (e) => { keys.d.pressed = true });
+btnRight.addEventListener('touchend', (e) => { keys.d.pressed = false });
+btnLeft.addEventListener('touchstart', (e) => { keys.a.pressed = true });
+btnLeft.addEventListener('touchend', (e) => { keys.a.pressed = false });
+
 window.addEventListener('keydown', (e) => {
-    if(player.hearth < 1) return;
+    if (player.hearth < 1) return;
     switch (e.key) {
         case 'd':
         case 'ArrowRight':
