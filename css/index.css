@@ -1,0 +1,130 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    position: relative;
+    margin: 20px 0 0 0;
+    /*border: 8px solid #6184c5;*/
+    /*border-radius: 6px;*/
+    /*padding: 4px;*/
+    display: flex;
+}
+
+.right-board {
+    flex: 1;
+    background-color: aqua;
+    border-left: 4px solid;
+}
+
+#cooldown {
+    height: 48px;
+    width: 48px;
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    /*border-radius: 24px;*/
+    opacity: 1;
+    background: url("../images/sword.png") no-repeat;
+    background-size: contain;
+}
+
+#cooldown-mask {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    border-radius: 38px;
+    border: 8px solid #c22222;
+    /*background-color: rgba(229, 45, 45, 0.58);*/
+    transform: rotate(-45deg);
+    opacity: 2;
+}
+
+#cooldown-mask::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 8px;
+    background-color: #c22222;
+    top: 26px;
+}
+
+#height-rule {
+    position: absolute;
+    top: 32px;
+    left: 100px;
+    font-size: 50px;
+    line-height: 46px;
+    font-weight: 900;
+    transform: rotateZ(90deg);
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: rgba(40, 61, 101, 0.75);
+    color: aliceblue;
+}
+
+
+.box {
+    position: absolute;
+    top: 100px;
+    left: 18px;
+    align-items: center;
+    gap: 10px;
+}
+
+.box-img {
+    height: 60px;
+    overflow: hidden;
+}
+
+.point {
+    /* position: absolute;
+    top: 100px;
+    left: 18px; */
+    align-items: center;
+    gap: 10px;
+}
+
+.point-img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 16px;
+}
+
+.hearth-img {
+    height: 60px;
+    line-height: 68px;
+    font-size: 48px;
+    color: #f93f3f;
+    /* width: 60px;
+    height: 60px; */
+    /* margin-top: 2px; */
+}
+
+.text-point {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+#goal {
+    height: 24px;
+}
+
+#hearth {
+    height: 60px;
+    line-height: 60px;
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>Template</title>
+    <meta http-equiv="Content-Type" content="text/html;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Lavishly+Yours&display=swap" rel="stylesheet"> -->
+    <style>
+        body {
+            background-color: black;
+            font-family: "Imperial Script", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+</head>
+<body>
+<!--<img id="cooldown" src="./images/sword.png" alt="cooldown">-->
+<div class="main">
+    <div id="cooldown"></div>
+    <div class="box">
+    <div class="flex-row point">
+        <div class="box-img">
+            <img src="./images/honey_1.png" alt="honey" class="point-img">
+        </div>
+        <div id="goal" class="text-point"></div>
+    </div>
+    <div class="flex-row point">
+        <div class="box-img">
+            <div class="hearth-img">&hearts;</div>
+        </div>
+        <div id="hearth" class="text-point"></div>
+    </div>
+</div>
+    <div id="cooldown-mask"></div>
+    <div id="height-rule"></div>
+    <canvas style="width:1224px; height: 776px;"></canvas>
+    <div class="right-board"></div>
+</div>
+<script src="./js/utils.js"></script>
+<script src="./js/classes/Sprite.js"></script>
+<script src="./js/classes/Player.js"></script>
+<script src="./js/classes/Enemy.js"></script>
+<script src="./js/classes/Fire.js"></script>
+<script src="./js/classes/CollisionBlock.js"></script>
+<script src="./js/classes/HoneyBlock.js"></script>
+<script src="./js/data/collisions.js"></script>
+<script src="./js/index.js"></script>
+</body>
+</html>
