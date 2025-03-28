@@ -140,6 +140,16 @@ const player = new Player({
     frameRate: 6,
     frameBuffer: 6,
     animations: {
+        Die: {
+            imageSrc: pathPage + 'images/bee-die.png',
+            frameRate: 1,
+            frameBuffer: 1,
+        },
+        DieLeft: {
+            imageSrc: pathPage + 'images/bee-die-left.png',
+            frameRate: 1,
+            frameBuffer: 1,
+        },
         Idle: {
             imageSrc: pathPage + 'images/bee.png',
             frameRate: 6,
@@ -255,6 +265,12 @@ function animate() {
     // })
     player.checkForHorizontalCanvaCollision();
 
+    if(player.hearth < 1) {
+        if (player.lastDirection === 'right')
+            player.switchSprite('Die');
+        else
+        player.switchSprite('DieLeft');
+    }
     player.update();
     player.velocity.x = 0;
     if (keys.d.pressed) {
@@ -322,6 +338,7 @@ animate();
 
 const btnJump = document.getElementById('btn-jump');
 btnJump.addEventListener('touchstart', (e) => {
+    e.preventDefault();
     if (e.repeat) return;
     console.log('click');
 
@@ -333,6 +350,7 @@ btnJump.addEventListener('touchstart', (e) => {
 
 const btnShoot = document.getElementById('btn-shoot');
 btnShoot.addEventListener('touchstart', (e) => {
+    e.preventDefault();
     if (fire.flying) return;
     fire.position.y = player.hitbox.position.y + 2;
     const value = 16 * 8;
@@ -354,10 +372,24 @@ btnShoot.addEventListener('touchstart', (e) => {
 const btnRight = document.getElementById('btn-right');
 const btnLeft = document.getElementById('btn-left');
 
-btnRight.addEventListener('touchstart', (e) => { keys.d.pressed = true });
-btnRight.addEventListener('touchend', (e) => { keys.d.pressed = false });
-btnLeft.addEventListener('touchstart', (e) => { keys.a.pressed = true });
-btnLeft.addEventListener('touchend', (e) => { keys.a.pressed = false });
+btnRight.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if (player.hearth < 1) return;
+    keys.d.pressed = true
+});
+btnRight.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keys.d.pressed = false
+});
+btnLeft.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if (player.hearth < 1) return;
+    keys.a.pressed = true
+});
+btnLeft.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keys.a.pressed = false
+});
 
 window.addEventListener('keydown', (e) => {
     if (player.hearth < 1) return;
